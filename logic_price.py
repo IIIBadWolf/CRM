@@ -6,3 +6,5 @@ def record_price_if_changed(product_id, new_price):
     last_price = history[0]['price'] if history else None
     if last_price is None or float(new_price) != float(last_price):
         add_price_history(product_id, new_price)
+
+# Примечание: Тест не учитывать потом удалить

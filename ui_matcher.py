@@ -87,8 +87,12 @@ class ProductMatchingWindow(QDialog):
         self.list_sup.clear()
         for s in unmatched + matched:
             it = QListWidgetItem(s)
-            if s in mapped_names:
+            is_mapped = s in mapped_names
+            it.setData(Qt.UserRole, is_mapped)
+            if is_mapped:
                 it.setBackground(QColor("#dff7e6"))
+                it.setToolTip("Связан с товаром: ID %s" % mapped_names[s])
+                it.setText(f"✓ {s}")
             self.list_sup.addItem(it)
 
         self.list_links.clear()
@@ -126,9 +130,7 @@ class ProductMatchingWindow(QDialog):
                 show = (mode in ('common','supplier') and q in txt)
             # hide mapped if checkbox off
             if not self.chk_show_mapped.isChecked():
-                bg = it.background()
-                # compare by color name
-                if bg.color().name() == QColor("#dff7e6").name():
+                if it.data(Qt.UserRole):
                     show = False
             it.setHidden(not show)
 
