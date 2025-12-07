@@ -3,7 +3,7 @@
 
 ## Настройка удалённого доступа к GitHub
 Чтобы связать локальный репозиторий с GitHub (`origin`):
-1. Текущий `origin` уже прописан на `https://github.com/IIIBadWolf/CRM.git`; проверить можно командой `git remote -v`.
+1. Текущий `origin` прописан на `https://github.com/IIIBadWolf/CRM.git`; проверить можно командой `git remote -v` (уже установлено в этой среде).
 2. Если нужно поменять URL (например, на SSH), выполните в корне проекта:
    ```bash
    git remote set-url origin git@github.com:IIIBadWolf/CRM.git
